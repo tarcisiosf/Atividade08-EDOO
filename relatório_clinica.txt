@@ -1,0 +1,28 @@
+=================================================
+ SIMULAÇÃO DA FILA DE PRIORIDADE
+=================================================
+
+--> Chegada de pacientes na clínica:
+
+--> Iniciando atendimentos (ordem de prioridade):
+
+Atendendo agora: Paciente [Nome: Ana, Idade: 45, Urgente: true]
+Atendendo agora: Paciente [Nome: João, Idade: 65, Urgente: false]
+Atendendo agora: Paciente [Nome: Júlia, Idade: 31, Urgente: true]
+Atendendo agora: Paciente [Nome: Fernando, Idade: 80, Urgente: false]
+Atendendo agora: Paciente [Nome: Tarcísio Santos, Idade: 22, Urgente: false]
+Atendendo agora: Paciente [Nome: Anna Luiza PMPA, Idade: 22, Urgente: false]
+Atendendo agora: Paciente [Nome: Beatriz, Idade: 19, Urgente: false]
+Atendendo agora: Paciente [Nome: Roberto, Idade: 55, Urgente: false]
+
+Todos os pacientes foram atendidos!
+
+=================================================
+ ESTATÍSTICAS E RELATÓRIO FINAL 
+=================================================
+
+--- RELATÓRIO DIÁRIO DA CLÍNICA ---
+Total de pacientes atendidos: 8
+Média de idade: 42,38 anos
+Paciente mais idoso atendido: Fernando (80 anos)
+-------------------------------------

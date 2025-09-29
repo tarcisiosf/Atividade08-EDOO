@@ -1,0 +1,22 @@
+Tarcísio Antônio dos Santos Filho - EXPLICAÇÃO 
+
+Fila Circular (Array) vs. Fila Encadeada
+Eficiência: Em termos de complexidade de tempo (Big-O), ambas são O(1) (tempo constante) para inserções e remoções, sendo igualmente eficientes.
+
+Diferenças de Código e Memória: A Fila Circular gerencia índices (inicio, fim) em um array de tamanho fixo. A Fila Encadeada manipula ponteiros (proximo) entre objetos (nós) e tem tamanho dinâmico, alocando memória conforme a necessidade.
+
+Fila Normal vs. Fila de Prioridade
+Complexidade de Inserção:
+
+Fila Normal: O(1), pois a inserção é sempre no final.
+
+Fila de Prioridade (com lista encadeada): O(1). Nossa implementação é muito eficiente porque a inserção prioritária acontece no início da lista, o que é uma operação de tempo constante.
+
+Vantagem da Lista Encadeada para Prioridade: Se usássemos um array, inserir um elemento prioritário no início exigiria deslocar todos os outros elementos (O(n)), tornando a operação muito lenta para filas grandes. A lista encadeada evita isso, sendo a escolha ideal para este cenário.
+
+Quando Usar Cada Estrutura
+Fila Circular (Array): Ótima para quando o tamanho máximo da fila é conhecido e limitado (ex: buffer de processamento, pool de conexões).
+
+Fila Encadeada (Nós): Ideal quando o tamanho da fila é variável e imprevisível (ex: fila de requisições de um servidor).
+
+Fila de Prioridade: Essencial quando a ordem de processamento depende da importância e não da ordem de chegada (ex: sistemas operacionais, atendimentos de emergência).
