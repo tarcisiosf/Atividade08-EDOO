@@ -1,13 +1,13 @@
 package br.com.aula;
 
-public class FilaDePacientes {
+public class FilaCircularDePacientes {
     private Paciente[] pacientes;
     private int inicio;
     private int fim;
     private int tamanho;
     private int capacidade;
 
-    public FilaDePacientes(int capacidade) {
+    public FilaCircularDePacientes(int capacidade) {
         this.capacidade = capacidade;
         this.pacientes = new Paciente[capacidade];
         this.inicio = 0;
@@ -25,7 +25,6 @@ public class FilaDePacientes {
         tamanho++;
     }
 
-
     public Paciente dequeue() {
         if (tamanho == 0) {
             System.out.println("A fila de espera está vazia.");
@@ -37,7 +36,6 @@ public class FilaDePacientes {
         return pacienteRemovido;
     }
 
-
     public Paciente peek() {
         if (tamanho == 0) {
             return null;
@@ -45,11 +43,9 @@ public class FilaDePacientes {
         return pacientes[inicio];
     }
 
-
     public boolean isEmpty() {
         return tamanho == 0;
     }
-
 
     public int size() {
         return tamanho;

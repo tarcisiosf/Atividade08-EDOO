@@ -3,46 +3,38 @@ package br.com.aula;
 public class Main {
 
     public static void main(String[] args) {
-        FilaDePacientes filaDeEspera = new FilaDePacientes(10);
+        System.out.println("=================================================");
+        System.out.println(" SIMULAÇÃO DA FILA DE PRIORIDADE");
+        System.out.println("=================================================\n");
+
+        FilaDePrioridadePacientes filaPrioridade = new FilaDePrioridadePacientes();
         ListaDeAtendidos listaDeAtendidos = new ListaDeAtendidos();
 
-        System.out.println(">>> INÍCIO DO DIA NA CLÍNICA UNIVERSITÁRIA <<<\n");
+        System.out.println("--> Chegada de pacientes na clínica:\n");
+        filaPrioridade.enqueue(new Paciente("Tarcísio Santos", 22));  // Normal
+        filaPrioridade.enqueue(new Paciente("Fernando", 80));           // Prioridade (Idoso)
+        filaPrioridade.enqueue(new Paciente("Anna Luiza PMPA", 22));    // Normal
+        filaPrioridade.enqueue(new Paciente("Júlia", 31, true));        // Prioridade (Urgente)
+        filaPrioridade.enqueue(new Paciente("João", 65));               // Prioridade (Idoso)
+        filaPrioridade.enqueue(new Paciente("Beatriz", 19));            // Normal
+        filaPrioridade.enqueue(new Paciente("Ana", 45, true));       // Prioridade (Urgente)
+        filaPrioridade.enqueue(new Paciente("Roberto", 55));            // Normal
 
-        System.out.println("1. Cinco pacientes chegam e entram na fila de espera...");
-        filaDeEspera.enqueue(new Paciente("Tarcísio Santos", 22));
-        filaDeEspera.enqueue(new Paciente("Anna Luiza PMPA", 22));
-        filaDeEspera.enqueue(new Paciente("João", 65));
-        filaDeEspera.enqueue(new Paciente("Ana", 45));
-        filaDeEspera.enqueue(new Paciente("Beatriz", 19));
-        System.out.println("Fila de espera agora tem " + filaDeEspera.size() + " pacientes.\n");
-
-        System.out.println("2. Médico inicia os atendimentos...");
-        for (int i = 0; i < 3; i++) {
-            Paciente pacienteASerAtendido = filaDeEspera.dequeue();
-
-            if (pacienteASerAtendido != null) {
-                System.out.println("Chamando para consulta: " + pacienteASerAtendido.getNome());
-                listaDeAtendidos.adicionar(pacienteASerAtendido);
-            }
-        }
-        System.out.println("Atendimentos finalizados. Fila agora tem " + filaDeEspera.size() + " pacientes.\n");
-
-        System.out.println("3. Verificando quem é o próximo da fila...");
-        Paciente proximo = filaDeEspera.peek();
-        if (proximo != null) {
-            System.out.println("Próximo paciente a ser chamado: " + proximo.getNome() + "\n");
-        } else {
-            System.out.println("Não há mais ninguém na fila.\n");
+        System.out.println("--> Iniciando atendimentos (ordem de prioridade):\n");
+        while (!filaPrioridade.isEmpty()) {
+            Paciente atendido = filaPrioridade.dequeue();
+            System.out.println("Atendendo agora: " + atendido);
+            listaDeAtendidos.adicionar(atendido);
         }
 
-        System.out.println("4. Exibindo relatório de pacientes já atendidos no dia:");
-        listaDeAtendidos.exibirTodos();
+        System.out.println("\nTodos os pacientes foram atendidos!\n");
 
-        System.out.println("\n>>> DESAFIO EXTRA: ESTATÍSTICAS <<<\n");
-        System.out.println("Total de pacientes atendidos até agora: " + listaDeAtendidos.getTotalAtendidos());
-        System.out.printf("Média de idade dos pacientes atendidos: %.2f anos\n", listaDeAtendidos.calcularMediaIdade());
+        System.out.println("=================================================");
+        System.out.println(" ESTATÍSTICAS E RELATÓRIO FINAL ");
+        System.out.println("=================================================\n");
 
-        System.out.println("\nVerificando se 'João' já foi atendido: " + listaDeAtendidos.pesquisar("João"));
-        System.out.println("Verificando se 'Lucas' já foi atendido: " + listaDeAtendidos.pesquisar("Lucas"));
+        System.out.println(listaDeAtendidos.gerarRelatorioDiario());
+
+        listaDeAtendidos.exportarRelatorioTxt("relatorio_clinica.txt");
     }
 }
